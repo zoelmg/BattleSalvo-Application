@@ -117,32 +117,37 @@ public class TwoBoards {
   private List<List<Coord>> getAllPlacements(int boardHeight, int boardWidth, ShipType type) {
     int shipSize = type.getSize();
     List<List<Coord>> allPlacements = new ArrayList<>();
+
     //generate horizontal placements
-    for (int y = 0; y < boardHeight; y +=1) {
-      //horizontal placements in one row
-      for (int h = 0; h + shipSize <= boardWidth; h+=1) { // will give 0, 1 loop for 5 size ship & 6x6 board
+    allPlacements.addAll(this.allPlacementsHelper(boardHeight, boardWidth, type));
+
+    //generate vertical placements
+    allPlacements.addAll(this.allPlacementsHelper(boardWidth, boardHeight, type));
+
+    return allPlacements;
+  }
+
+  /**
+   * @param sizeOne is first dimension's size of board
+   * @param sizeTwo is second dimensions size of board
+   * @param type is type of ship placement being calculated
+   * @return a list of all locations this ship type can be placed on
+   */
+  private List<List<Coord>> allPlacementsHelper(int sizeOne, int sizeTwo, ShipType type) {
+    int shipSize = type.getSize();
+    List<List<Coord>> allPlacements = new ArrayList<>();
+    //generate all placements placements
+    for (int y = 0; y < sizeOne; y +=1) {
+      //placements in one direction
+      for (int h = 0; h + shipSize <= sizeTwo; h+=1) {
         List<Coord> thisPlace = new ArrayList<>();
-        //single horizontal placement
+        //single placement
         for (int x = h; x < h + shipSize; x+=1) {
           thisPlace.add(new Coord(x, y, type.getStatus()));
         }
         allPlacements.add(thisPlace);
       }
     }
-
-    //generate vertical placements
-    for (int x = 0; x < boardWidth; x +=1) {
-      //vertical placements in one column
-      for (int v = 0; v + shipSize <= boardHeight; v+=1) { // will give 0, 1 loop for 5 size ship & 6x6 board
-        List<Coord> thisPlace = new ArrayList<>();
-        //single vertical placement
-        for (int y = v; y < v + shipSize; y+=1) {
-          thisPlace.add(new Coord(x, y, type.getStatus()));
-        }
-        allPlacements.add(thisPlace);
-      }
-    }
-
     return allPlacements;
   }
 
