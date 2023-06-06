@@ -11,9 +11,8 @@ import cs3500.pa04.model.Coord;
 import cs3500.pa04.model.Player;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
+//import java.io.OutputStream;
 import java.io.PrintStream;
-import java.lang.constant.Constable;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,13 +92,30 @@ public class ProxyController implements Controller {
   }
 
   private void handleReportDamage(JsonNode arguments) {
-    //will take in a VolleyJson of shots fired on this player's board
-    //will return a VolleyJson of shots that hit this player's ships to server
+    VolleyJson opponentShots = this.mapper.convertValue(arguments, VolleyJson.class);
+    List<Coord> coords = opponentShots.makeCoordList();
+
+    List<Coord> aiSuccesfulHits = this.aiPlayer.reportDamage(coords);
+
+    List<CoordJson> coordJsons = new ArrayList<>();
+    for (Coord c : aiSuccesfulHits) {
+      coordJsons.add(new CoordJson(c.getXpos(), c.getYpos()));
+    }
+
+    VolleyJson response = new VolleyJson(coordJsons);
+    JsonNode jsonResponse = JsonUtils.serializeRecord(response);
+    this.out.println(jsonResponse);
   }
 
   private void handleSuccessfulHits(JsonNode arguments) {
     //will take in a VolleyJson of shots that hit opponents ships
+    VolleyJson successfulHits = this.mapper.convertValue(arguments, VolleyJson.class);
+    List<Coord> coords = successfulHits.makeCoordList();
+
+    this.aiPlayer.successfulHits(coords);
+
     //no added info in return to server
+    this.out.println(VOID_RESPONSE); //Is this the correct way to return nothing?!
   }
 
   private void handleEndGame(JsonNode arguments) {
