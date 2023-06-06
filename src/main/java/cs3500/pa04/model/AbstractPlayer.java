@@ -31,7 +31,7 @@ public abstract class AbstractPlayer implements Player {
    * @param random a random used for setup of player's boards
    */
   public AbstractPlayer(Random random) {
-    this.name = "Not yet needed for PA03";
+    this.name = "zoelmg";
     this.boards = null;
     this.random = random;
   }

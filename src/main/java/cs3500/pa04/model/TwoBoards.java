@@ -119,10 +119,38 @@ public class TwoBoards {
     List<List<Coord>> allPlacements = new ArrayList<>();
 
     //generate horizontal placements
+    for (int y = 0; y < boardHeight; y +=1) {
+      //horizontal placements in one row
+      for (int h = 0; h + shipSize <= boardWidth; h+=1) { // will give 0, 1 loop for 5 size ship & 6x6 board
+        List<Coord> thisPlace = new ArrayList<>();
+        //single horizontal placement
+        for (int x = h; x < h + shipSize; x+=1) {
+          thisPlace.add(new Coord(x, y, type.getStatus()));
+        }
+        allPlacements.add(thisPlace);
+      }
+    }
+
+    //generate vertical placements
+    for (int x = 0; x < boardWidth; x +=1) {
+      //vertical placements in one column
+      for (int v = 0; v + shipSize <= boardHeight; v+=1) { // will give 0, 1 loop for 5 size ship & 6x6 board
+        List<Coord> thisPlace = new ArrayList<>();
+        //single vertical placement
+        for (int y = v; y < v + shipSize; y+=1) {
+          thisPlace.add(new Coord(x, y, type.getStatus()));
+        }
+        allPlacements.add(thisPlace);
+      }
+    }
+
+    /**
+    //generate horizontal placements
     allPlacements.addAll(this.allPlacementsHelper(boardHeight, boardWidth, type));
 
     //generate vertical placements
     allPlacements.addAll(this.allPlacementsHelper(boardWidth, boardHeight, type));
+     */
 
     return allPlacements;
   }

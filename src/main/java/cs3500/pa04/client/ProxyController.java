@@ -71,6 +71,7 @@ public class ProxyController implements Controller {
    * @param message the MessageJSON used to determine what the server has sent
    */
   private void delegateMessage(MessageJson message) {
+    System.out.println("");
     String name = message.methodCall();
     JsonNode arguments = message.arguments();
 
@@ -94,7 +95,9 @@ public class ProxyController implements Controller {
   private void handleJoin(JsonNode arguments) {
     PlayerJson response = new PlayerJson(this.aiPlayer.name(), GameType.SINGLE);
 
-    JsonNode jsonResponse = JsonUtils.serializeRecord(response);
+    JsonNode jsonArgResponse = JsonUtils.serializeRecord(response);
+    MessageJson joinResponse = new MessageJson("join", jsonArgResponse);
+    JsonNode jsonResponse = JsonUtils.serializeRecord(joinResponse);
     this.out.println(jsonResponse);
   }
 
@@ -118,12 +121,10 @@ public class ProxyController implements Controller {
     List<ShipJson> fleetJson = new ArrayList<>();
     for (Ship s : fleet) {
       List<Coord> coords = s.getLocation();
+      Coord headCoord = coords.get(0);
 
-      //get list of coordJsons
-      List<CoordJson> coordJsons = new ArrayList<>();
-      for (Coord c : coords) {
-        coordJsons.add(new CoordJson(c.getXpos(), c.getYpos()));
-      }
+      //turn the head coord into a coordJson
+      CoordJson headJson = new CoordJson(headCoord.getXpos(), headCoord.getYpos());
 
       //get ship direction
       ShipDirection isVertical;
@@ -132,13 +133,14 @@ public class ProxyController implements Controller {
       } else {
         isVertical = ShipDirection.HORIZONTAL;
       }
-
-      fleetJson.add(new ShipJson(coordJsons, coords.size(), isVertical));
+      fleetJson.add(new ShipJson(headJson, coords.size(), isVertical));
     }
 
     //will return a FleetJson to server'
     FleetJson response = new FleetJson(fleetJson);
-    JsonNode jsonResponse = JsonUtils.serializeRecord(response);
+    JsonNode jsonArgResponse = JsonUtils.serializeRecord(response);
+    MessageJson setupResponse = new MessageJson("setup", jsonArgResponse);
+    JsonNode jsonResponse = JsonUtils.serializeRecord(setupResponse);
     this.out.println(jsonResponse);
   }
 
@@ -151,7 +153,9 @@ public class ProxyController implements Controller {
     }
 
     VolleyJson response = new VolleyJson(coordJsons);
-    JsonNode jsonResponse = JsonUtils.serializeRecord(response);
+    JsonNode jsonArgResponse = JsonUtils.serializeRecord(response);
+    MessageJson takeshotsResponse = new MessageJson("take-shots", jsonArgResponse);
+    JsonNode jsonResponse = JsonUtils.serializeRecord(takeshotsResponse);
     this.out.println(jsonResponse);
   }
 
@@ -167,7 +171,9 @@ public class ProxyController implements Controller {
     }
 
     VolleyJson response = new VolleyJson(coordJsons);
-    JsonNode jsonResponse = JsonUtils.serializeRecord(response);
+    JsonNode jsonArgResponse = JsonUtils.serializeRecord(response);
+    MessageJson reportdamageResponse = new MessageJson("report-damage", jsonArgResponse);
+    JsonNode jsonResponse = JsonUtils.serializeRecord(reportdamageResponse);
     this.out.println(jsonResponse);
   }
 

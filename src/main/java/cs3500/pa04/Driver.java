@@ -24,16 +24,32 @@ public class Driver {
    *
    * @param args - no command line args required
    */
-  public static void main(String[] args) throws IOException {
-    if (args.length == 0) {
-      runAiAgainstManualPlayer();;
-    } else if (args.length == 2) {
-      String host = args[0];
-      int port = Integer.parseInt(args[1]);
-      runClient(host, port);
-    } else {
-      throw new IllegalArgumentException("Enter 0 arguments to play against this CPU Player" +
-          "or Enter Host and Port to add this CPU Player to existing server");
+  public static void main(String[] args) {
+    /*
+    try {
+      Socket socket = new Socket("0.0.0.0", 35001);
+      PrintStream sendToServer = new PrintStream(socket.getOutputStream());
+
+      sendToServer.println("Hi Server");
+    } catch (IOException e) {
+      System.out.println(":(");
+    }
+*/
+
+    try {
+      if (args.length == 0) {
+        runAiAgainstManualPlayer();
+        ;
+      } else if (args.length == 2) {
+        String host = args[0];
+        int port = Integer.parseInt(args[1]);
+        runClient(host, port);
+      } else {
+        throw new IllegalArgumentException("Enter 0 arguments to play against this CPU Player" +
+            "or Enter Host and Port to add this CPU Player to existing server");
+      }
+    } catch (IOException e) {
+      System.out.println(":(");
     }
   }
 
