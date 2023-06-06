@@ -4,14 +4,16 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa04.controller.Controller;
 import cs3500.pa04.json.CoordJson;
+import cs3500.pa04.json.GameType;
 import cs3500.pa04.json.JsonUtils;
 import cs3500.pa04.json.MessageJson;
+import cs3500.pa04.json.PlayerJson;
 import cs3500.pa04.json.VolleyJson;
 import cs3500.pa04.model.Coord;
 import cs3500.pa04.model.Player;
 import java.io.IOException;
 import java.io.InputStream;
-//import java.io.OutputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -70,7 +72,10 @@ public class ProxyController implements Controller {
   }
 
   private void handleJoin(JsonNode arguments) {
-    //will require a PlayerInfo object to return response to server
+    PlayerJson response = new PlayerJson(this.aiPlayer.name(), GameType.SINGLE);
+
+    JsonNode jsonResponse = JsonUtils.serializeRecord(response);
+    this.out.println(jsonResponse);
   }
 
   private void handleSetup(JsonNode arguments) {
