@@ -2,12 +2,12 @@ package cs3500.pa03.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import cs3500.pa04.view.SingleManualPlayerView;
-import cs3500.pa04.view.View;
 import cs3500.pa04.model.AbstractPlayer;
 import cs3500.pa04.model.Coord;
 import cs3500.pa04.model.ManualPlayer;
 import cs3500.pa04.model.ShipType;
+import cs3500.pa04.view.SingleManualPlayerView;
+import cs3500.pa04.view.View;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;

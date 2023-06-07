@@ -5,8 +5,12 @@ import cs3500.pa04.model.Coord;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represent a List of Coordinates in JsonNode format
+ *
+ * @param shots a list of coordinates/shots
+ */
 public record VolleyJson(
-
     @JsonProperty("coordinates") List<CoordJson> shots) {
 
   public List<Coord> makeCoordList() {
@@ -16,5 +20,4 @@ public record VolleyJson(
     }
     return result;
   }
-
 }

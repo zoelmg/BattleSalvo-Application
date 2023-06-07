@@ -2,13 +2,13 @@ package cs3500.pa03.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import cs3500.pa04.controller.BattleSalvoController;
+import cs3500.pa04.controller.Controller;
 import cs3500.pa04.model.AiPlayer;
 import cs3500.pa04.model.ManualPlayer;
 import cs3500.pa04.model.Player;
 import cs3500.pa04.view.SingleManualPlayerView;
 import cs3500.pa04.view.View;
-import cs3500.pa04.controller.BattleSalvoController;
-import cs3500.pa04.controller.Controller;
 import java.io.StringReader;
 import java.util.Random;
 import java.util.Scanner;
@@ -66,40 +66,22 @@ class BattleSalvoControllerTest {
    * The manual player loses the game against the AI player
    */
   @Test
-  void testUserLose() {
+  void testUserWin() {
     Random randomP1 = new Random(30);
     Random randomP2 = new Random(35);
 
     String userInput = """
         6 6 
         1 1 1 1 
-        0 0
-        1 0 1 3 1 4 1 5
-        2 0 2 4 2 5
-        3 0 3 4 3 5
-        4 0 4 4 4 5
-        5 0 5 1 5 4 5 5
-        0 2
-        2 2
-        4 2
-        0 3
-        2 1
-        4 3
-        0 5
-        1 1
-        2 3
-        3 2
-        4 1
-        5 2
-        0 4
-        1 2
-        3 1
-        4 3
-        5 3
-        0 1
-        2 2
-        3 3
-                
+        0 2 0 5 1 2 1 4 
+        1 5 2 2 2 4 2 5
+        3 1 3 2 3 4 3 5
+        4 1 4 2 4 4 4 5 
+        5 1 5 2 5 3 5 4 
+        5 5 0 0 0 1 0 3 
+        0 4 1 0 1 1 1 3
+        2 0 2 1 2 3 3 0 
+        3 3 4 0 4 3 5 0
         """;
     Readable input = new StringReader(userInput);
 
@@ -115,14 +97,14 @@ class BattleSalvoControllerTest {
 
     singlePlayerController.run();
 
-    assertEquals(ExpectedGameOutput.userLost, output.toString());
+    assertEquals(ExpectedGameOutput.userWon, output.toString());
   }
 
   /**
    * The manual player loses the game against the AI player
    */
   @Test
-  void testUserWin() {
+  void testUserLose() {
     Random randomP1 = new Random(5);
     Random randomP2 = new Random(29);
 
@@ -155,7 +137,7 @@ class BattleSalvoControllerTest {
 
     singlePlayerController.run();
 
-    assertEquals(ExpectedGameOutput.userWon, output.toString());
+    assertEquals(ExpectedGameOutput.userLost, output.toString());
   }
 
 

@@ -17,10 +17,10 @@ import java.util.Scanner;
  * Represent the controller BattleSalvo Game of Two Players
  */
 public class BattleSalvoController implements Controller {
-  private Player playerOne;
-  private Player playerTwo;
-  private View gameDisplay;
-  private Scanner scan;
+  private final Player playerOne;
+  private final Player playerTwo;
+  private final View gameDisplay;
+  private final Scanner scan;
 
   /**
    * Initialize a game for one Ai player and one Manual Player
