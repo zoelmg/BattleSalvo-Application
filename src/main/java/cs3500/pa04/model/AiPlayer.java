@@ -48,12 +48,13 @@ public class AiPlayer extends AbstractPlayer {
 
     List<Coord> shots = new ArrayList<>();
     int shotsAvailable = boards.howManyShotsAvailable();
-
-    do {
-      int randomIndex = random.nextInt(boards.getRemainingOpCoord().size());
-      shots.add(boards.getRemainingOpCoord().get(randomIndex));
-      boards.getRemainingOpCoord().remove(randomIndex);
-    } while (shots.size() != shotsAvailable);
+    if (!(shotsAvailable == 0)) {
+      do {
+        int randomIndex = random.nextInt(boards.getRemainingOpCoord().size());
+        shots.add(boards.getRemainingOpCoord().get(randomIndex));
+        boards.getRemainingOpCoord().remove(randomIndex);
+      } while (shots.size() != shotsAvailable);
+    }
 
     return shots;
   }
