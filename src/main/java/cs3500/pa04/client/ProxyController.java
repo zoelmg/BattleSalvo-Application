@@ -22,7 +22,6 @@ import cs3500.pa04.model.Ship;
 import cs3500.pa04.model.ShipType;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -71,16 +70,15 @@ public class ProxyController implements Controller {
    * @param message the MessageJSON used to determine what the server has sent
    */
   private void delegateMessage(MessageJson message) {
-    System.out.println("");
     String name = message.methodCall();
     JsonNode arguments = message.arguments();
 
     if ("join".equals(name)) {
-      handleJoin(arguments);
+      handleJoin();
     } else if ("setup".equals(name)) {
       handleSetup(arguments);
     } else if ("take-shots".equals(name)) {
-      handleTakeShots(arguments);
+      handleTakeShots();
     } else if ("report-damage".equals(name)) {
       handleReportDamage(arguments);
     } else if ("successful-hits".equals(name)) {
@@ -92,7 +90,7 @@ public class ProxyController implements Controller {
     }
   }
 
-  private void handleJoin(JsonNode arguments) {
+  private void handleJoin() {
     PlayerJson response = new PlayerJson(this.aiPlayer.name(), GameType.SINGLE);
 
     JsonNode jsonArgResponse = JsonUtils.serializeRecord(response);
@@ -104,20 +102,11 @@ public class ProxyController implements Controller {
   private void handleSetup(JsonNode arguments) {
     //will require a SetupJson or some sort of object to take in server input
     SetupJson setupArgs  = this.mapper.convertValue(arguments, SetupJson.class);
-    int height = setupArgs.height();
-    int width = setupArgs.width();
 
-    Map<ShipType, Integer> shipSpecs = new LinkedHashMap<>();
-    int carrierNum = setupArgs.fleetSpec().carrier();
-    int battleNum = setupArgs.fleetSpec().battleship();
-    int destroyerNum = setupArgs.fleetSpec().destroyer();
-    int subNum = setupArgs.fleetSpec().submarine();
-    shipSpecs.put(ShipType.CARRIER, carrierNum);
-    shipSpecs.put(ShipType.BATTLESHIP, battleNum);
-    shipSpecs.put(ShipType.DESTROYER, destroyerNum);
-    shipSpecs.put(ShipType.SUBMARINE, subNum);
+    List<Ship> fleet = this.aiPlayer.setup(setupArgs.height(), setupArgs.width(),
+        setupArgs.fleetSpec());
 
-    List<Ship> fleet = this.aiPlayer.setup(height, width, shipSpecs);
+
     List<ShipJson> fleetJson = new ArrayList<>();
     for (Ship s : fleet) {
       List<Coord> coords = s.getLocation();
@@ -144,8 +133,9 @@ public class ProxyController implements Controller {
     this.out.println(jsonResponse);
   }
 
-  private void handleTakeShots(JsonNode arguments) {
 
+
+  private void handleTakeShots() {
     List<Coord> shots = this.aiPlayer.takeShots();
     List<CoordJson> coordJsons = new ArrayList<>();
     for (Coord c : shots) {
@@ -158,6 +148,8 @@ public class ProxyController implements Controller {
     JsonNode jsonResponse = JsonUtils.serializeRecord(takeshotsResponse);
     this.out.println(jsonResponse);
   }
+
+
 
   private void handleReportDamage(JsonNode arguments) {
     VolleyJson opponentShots = this.mapper.convertValue(arguments, VolleyJson.class);
@@ -194,7 +186,6 @@ public class ProxyController implements Controller {
     String reason = serverArgs.reason();
 
     this.aiPlayer.endGame(result, reason);
-
     this.out.println(VOID_RESPONSE); //Is this the correct way to return nothing?!
   }
 

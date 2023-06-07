@@ -72,7 +72,7 @@ public class Driver {
   private static void runClient(String host, int port) throws IOException {
     Socket server = new Socket(host, port);
     Random random = new Random();
-    Controller proxyDealer = new ProxyController(server, new AiPlayer(random));
-    proxyDealer.run();
+    Controller controller = new ProxyController(server, new AiPlayer(random));
+    controller.run();
   }
 }

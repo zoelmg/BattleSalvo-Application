@@ -36,12 +36,12 @@ public class ExpectedGameOutput {
        O   O   O   O   O   O \s
        O   O   O   O   O   O \s
       Your Board:\s
-       O   O   O   O   O   O \s
-       C   C   C   C   C   C \s
-       B   B   B   B   B   O \s
-       O   O   O   O   O   O \s
-       O   D   D   D   D   O \s
-       O   O   O   S   S   S \s
+       O   C   O   O   O   D \s
+       B   C   O   O   O   D \s
+       B   C   S   S   S   D \s
+       B   C   O   O   O   D \s
+       B   C   O   O   O   O \s
+       B   C   O   O   O   O \s
       Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
@@ -52,14 +52,14 @@ public class ExpectedGameOutput {
        H   H   O   O   O   O \s
        O   O   O   O   O   O \s
        O   M   O   O   O   O \s
-       H   O   O   O   O   O \s
+       M   O   O   O   O   O \s
       Your Board:\s
-       O   M   O   O   O   O \s
-       C   C   C   C   C   C \s
-       B   B   B   B   B   O \s
-       O   O   O   O   M   O \s
-       O   D   D   H   D   O \s
-       O   O   O   H   S   S \s
+       O   C   O   O   M   D \s
+       B   C   M   O   O   D \s
+       B   C   S   S   S   H \s
+       B   H   O   O   O   D \s
+       B   C   O   O   O   O \s
+       B   C   O   O   O   O \s
       Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
@@ -69,15 +69,15 @@ public class ExpectedGameOutput {
        O   O   O   O   O   O \s
        H   H   H   O   O   O \s
        O   O   O   O   O   O \s
-       O   M   H   O   O   O \s
-       H   H   H   O   O   O \s
+       O   M   M   O   O   O \s
+       M   M   M   O   O   O \s
       Your Board:\s
-       O   M   O   O   O   O \s
-       C   C   C   C   H   H \s
-       B   H   B   B   B   O \s
-       O   O   M   O   M   O \s
-       O   D   D   H   D   O \s
-       O   O   O   H   S   S \s
+       O   C   O   O   M   D \s
+       B   C   M   O   O   H \s
+       B   C   S   S   S   H \s
+       B   H   O   O   O   H \s
+       B   C   M   O   O   O \s
+       H   C   O   O   O   O \s
       Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
@@ -87,15 +87,15 @@ public class ExpectedGameOutput {
        O   O   O   H   O   O \s
        H   H   H   H   O   O \s
        O   O   O   O   O   O \s
-       O   M   H   H   O   O \s
-       H   H   H   H   O   O \s
+       O   M   M   M   O   O \s
+       M   M   M   M   O   O \s
       Your Board:\s
-       O   M   O   M   O   O \s
-       H   C   C   C   H   H \s
-       B   H   B   H   H   O \s
-       O   O   M   O   M   O \s
-       O   D   D   H   D   O \s
-       O   O   O   H   S   S \s
+       O   C   O   O   M   D \s
+       B   C   M   O   O   H \s
+       B   C   S   S   S   H \s
+       H   H   M   O   O   H \s
+       B   C   M   M   O   O \s
+       H   C   M   O   O   O \s
       Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
@@ -105,88 +105,88 @@ public class ExpectedGameOutput {
        O   O   O   H   M   O \s
        H   H   H   H   H   O \s
        O   O   O   O   O   O \s
-       O   M   H   H   H   O \s
-       H   H   H   H   H   O \s
+       O   M   M   M   H   O \s
+       M   M   M   M   H   O \s
       Your Board:\s
-       O   M   O   M   M   O \s
-       H   C   C   C   H   H \s
-       B   H   B   H   H   O \s
-       O   O   M   O   M   O \s
-       O   D   H   H   H   O \s
-       O   O   O   H   S   H \s
+       O   C   O   M   M   D \s
+       B   C   M   O   O   H \s
+       B   C   H   S   S   H \s
+       H   H   M   O   O   H \s
+       H   C   M   M   M   O \s
+       H   C   M   O   O   O \s
       Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
       Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
       Opponent's Board:\s
        O   O   O   O   O   O \s
-       O   O   O   H   M   M \s
-       H   H   H   H   H   M \s
-       O   O   O   O   O   M \s
-       O   M   H   H   H   H \s
-       H   H   H   H   H   O \s
+       O   O   O   H   M   H \s
+       H   H   H   H   H   H \s
+       O   O   O   O   O   H \s
+       O   M   M   M   H   H \s
+       M   M   M   M   H   O \s
       Your Board:\s
-       O   M   O   M   M   O \s
-       H   C   C   C   H   H \s
-       H   H   B   H   H   O \s
-       O   O   M   O   M   O \s
-       O   H   H   H   H   O \s
-       O   M   O   H   S   H \s
-      Please enter 3 valid shots
+       M   C   O   M   M   D \s
+       B   C   M   O   O   H \s
+       B   C   H   S   S   H \s
+       H   H   M   O   O   H \s
+       H   H   M   M   M   O \s
+       H   C   M   O   M   O \s
+      Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
       Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
       Opponent's Board:\s
        M   O   O   O   O   O \s
-       M   O   O   H   M   M \s
-       H   H   H   H   H   M \s
-       O   O   O   O   O   M \s
-       O   M   H   H   H   H \s
+       H   O   O   H   M   H \s
        H   H   H   H   H   H \s
+       M   O   O   O   O   H \s
+       O   M   M   M   H   H \s
+       M   M   M   M   H   H \s
       Your Board:\s
-       O   M   O   M   M   O \s
-       H   C   H   H   H   H \s
-       H   H   B   H   H   O \s
-       O   O   M   O   M   O \s
-       O   H   H   H   H   O \s
-       O   M   O   H   S   H \s
-      Please enter 3 valid shots
+       M   C   O   M   M   D \s
+       B   H   M   O   O   H \s
+       B   C   H   H   S   H \s
+       H   H   M   M   O   H \s
+       H   H   M   M   M   O \s
+       H   C   M   O   M   O \s
+      Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
       Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
       Opponent's Board:\s
        M   M   O   O   O   O \s
-       M   O   O   H   M   M \s
-       H   H   H   H   H   M \s
-       M   O   O   O   O   M \s
-       M   M   H   H   H   H \s
+       H   H   O   H   M   H \s
        H   H   H   H   H   H \s
+       M   M   O   O   O   H \s
+       M   M   M   M   H   H \s
+       M   M   M   M   H   H \s
       Your Board:\s
-       O   M   O   M   M   O \s
-       H   C   H   H   H   H \s
-       H   H   B   H   H   M \s
-       O   O   M   O   M   O \s
-       O   H   H   H   H   O \s
-       O   M   O   H   S   H \s
-      Please enter 3 valid shots
+       M   C   O   M   M   D \s
+       B   H   M   O   O   H \s
+       B   H   H   H   S   H \s
+       H   H   M   M   O   H \s
+       H   H   M   M   M   M \s
+       H   H   M   O   M   O \s
+      Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
       Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
       Opponent's Board:\s
-       M   M   M   O   O   O \s
-       M   H   O   H   M   M \s
-       H   H   H   H   H   M \s
-       M   M   O   O   O   M \s
-       M   M   H   H   H   H \s
+       M   M   M   M   O   O \s
+       H   H   H   H   M   H \s
        H   H   H   H   H   H \s
+       M   M   M   O   O   H \s
+       M   M   M   M   H   H \s
+       M   M   M   M   H   H \s
       Your Board:\s
-       O   M   O   M   M   O \s
-       H   C   H   H   H   H \s
-       H   H   B   H   H   M \s
-       O   O   M   M   M   O \s
-       O   H   H   H   H   O \s
-       O   M   O   H   S   H \s
-      Please enter 3 valid shots
+       M   C   M   M   M   D \s
+       H   H   M   O   O   H \s
+       B   H   H   H   S   H \s
+       H   H   M   M   M   H \s
+       H   H   M   M   M   M \s
+       H   H   M   O   M   O \s
+      Please enter 4 valid shots
       ---------------------------------------
       You Won! :)""";
 
@@ -197,21 +197,10 @@ public class ExpectedGameOutput {
       Hello! Welcome to the OOD BattleSalvo Game!
       Please enter a valid height and width below
       ---------------------------------------
-      ---------------------------------------
-      Uh Oh! You've entered invalid dimensions.\s
-      Please remember that the height and width of the game
-      must be in the range (6, 15), inclusive.
-      Try again!
-      ---------------------------------------
       Please enter your fleet in the order [Carrier, Battleship, Destroyer, Submarine].
       Remember, your fleet may not exceed size 6
       ---------------------------------------
       ---------------------------------------
-      Uh Oh! You've entered invalid fleet sizes.
-      Please enter your fleet in the order [Carrier, Battleship, Destroyer, Submarine].
-      Try again!
-      Remember, your fleet may not exceed size 6
-      ---------------------------------------
       Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
       Opponent's Board:\s
        O   O   O   O   O   O \s
@@ -221,174 +210,210 @@ public class ExpectedGameOutput {
        O   O   O   O   O   O \s
        O   O   O   O   O   O \s
       Your Board:\s
-       O   S   S   S   O   O \s
-       O   O   O   O   O   O \s
-       C   C   C   C   C   C \s
-       O   D   D   D   D   O \s
-       O   O   O   O   O   O \s
-       O   B   B   B   B   B \s
+       O   O   C   O   O   B \s
+       O   O   C   O   O   B \s
+       D   O   C   O   O   B \s
+       D   O   C   S   O   B \s
+       D   O   C   S   O   B \s
+       D   O   C   S   O   O \s
       Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
       Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
       Opponent's Board:\s
-       H   O   O   O   O   O \s
+       M   M   O   O   O   O \s
        O   O   O   O   O   O \s
-       H   O   O   O   O   O \s
-       M   O   O   O   O   O \s
        O   O   O   O   O   O \s
-       O   O   O   O   O   M \s
+       O   M   O   O   O   O \s
+       O   M   O   O   O   O \s
+       O   O   O   O   O   O \s
       Your Board:\s
-       O   S   S   S   O   O \s
-       O   O   O   O   O   O \s
-       C   C   C   C   C   C \s
-       M   D   H   D   D   O \s
-       O   O   O   O   M   M \s
-       O   B   B   B   B   B \s
+       O   O   C   O   O   B \s
+       O   O   C   O   O   H \s
+       H   O   C   O   O   H \s
+       D   O   C   S   O   B \s
+       D   O   C   S   O   B \s
+       H   O   C   S   O   O \s
       Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
       Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
       Opponent's Board:\s
-       H   H   O   O   O   O \s
-       O   H   O   O   O   O \s
-       H   O   O   O   O   O \s
-       M   O   O   O   O   O \s
-       M   O   O   O   O   O \s
-       M   O   O   O   O   M \s
-      Your Board:\s
-       O   S   S   S   M   O \s
-       O   O   M   O   O   O \s
-       C   C   C   C   C   C \s
-       M   H   H   D   D   M \s
-       O   O   O   O   M   M \s
-       O   B   B   B   B   B \s
-      Please enter 4 valid shots
-      ---------------------------------------
-      ---------------------------------------
-      Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
-      Opponent's Board:\s
-       H   H   O   O   O   O \s
-       O   H   O   O   O   O \s
-       H   H   O   O   O   O \s
-       M   M   O   O   O   O \s
-       M   M   O   O   O   O \s
-       M   M   O   O   O   M \s
-      Your Board:\s
-       O   S   H   H   M   O \s
-       O   O   M   M   O   O \s
-       C   C   C   C   C   C \s
-       M   H   H   D   D   M \s
-       O   O   O   O   M   M \s
-       O   B   B   B   B   H \s
-      Please enter 4 valid shots
-      ---------------------------------------
-      ---------------------------------------
-      Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
-      Opponent's Board:\s
-       H   H   O   O   O   O \s
-       O   H   O   O   O   O \s
-       H   H   O   O   O   O \s
-       M   M   O   O   O   O \s
-       M   M   O   O   O   O \s
-       M   M   O   O   O   M \s
-      Your Board:\s
-       O   S   H   H   M   O \s
-       O   O   M   M   O   O \s
-       C   C   C   C   C   C \s
-       M   H   H   D   D   M \s
-       O   O   O   O   M   M \s
-       O   B   B   B   B   H \s
-      Please enter 4 valid shots
-      ---------------------------------------
-      ---------------------------------------
-      Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
-      Opponent's Board:\s
-       H   H   O   H   O   O \s
-       O   H   O   M   O   O \s
-       H   H   O   O   O   O \s
-       M   M   O   O   O   O \s
        M   M   M   O   O   O \s
-       M   M   M   O   O   M \s
+       O   O   O   O   O   O \s
+       O   O   O   O   O   O \s
+       O   M   O   O   O   O \s
+       O   M   M   O   O   O \s
+       O   M   M   O   O   O \s
       Your Board:\s
-       O   S   H   H   M   M \s
-       O   O   M   M   O   O \s
-       H   C   C   C   C   C \s
-       M   H   H   D   D   M \s
-       O   O   M   M   M   M \s
-       O   B   B   B   B   H \s
+       O   O   C   O   M   H \s
+       O   O   C   O   M   H \s
+       H   O   C   O   O   H \s
+       D   O   H   S   O   B \s
+       D   O   C   S   O   B \s
+       H   O   C   S   O   O \s
       Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
       Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
       Opponent's Board:\s
-       H   H   O   H   O   O \s
-       O   H   O   M   O   O \s
-       H   H   O   H   O   O \s
-       M   M   O   H   O   O \s
-       M   M   M   M   O   O \s
-       M   M   M   M   O   M \s
+       M   M   M   M   M   O \s
+       O   O   O   O   O   O \s
+       O   O   O   O   O   O \s
+       O   M   O   O   O   O \s
+       O   M   M   M   O   O \s
+       O   M   M   M   O   O \s
       Your Board:\s
-       O   H   H   H   M   M \s
-       O   O   M   M   M   O \s
-       H   C   H   H   C   C \s
-       M   H   H   D   D   M \s
-       O   O   M   M   M   M \s
-       O   B   B   B   B   H \s
-      Please enter 3 valid shots
+       O   O   C   O   M   H \s
+       O   O   C   O   M   H \s
+       H   M   C   O   M   H \s
+       D   O   H   H   O   B \s
+       D   O   C   S   O   B \s
+       H   O   C   S   O   M \s
+      Please enter 4 valid shots
       ---------------------------------------
       ---------------------------------------
       Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
       Opponent's Board:\s
-       H   H   O   H   H   O \s
-       O   H   O   M   M   O \s
-       H   H   O   H   H   O \s
-       M   M   O   H   O   O \s
-       M   M   M   M   O   O \s
-       M   M   M   M   O   M \s
-      Your Board:\s
-       O   H   H   H   M   M \s
-       M   M   M   M   M   O \s
-       H   C   H   H   C   C \s
-       M   H   H   D   D   M \s
-       O   O   M   M   M   M \s
-       O   B   H   H   B   H \s
-      Please enter 3 valid shots
-      ---------------------------------------
-      ---------------------------------------
-      Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
-      Opponent's Board:\s
-       H   H   O   H   H   O \s
-       O   H   O   M   M   O \s
-       H   H   O   H   H   O \s
-       M   M   O   H   H   O \s
-       M   M   M   M   M   O \s
        M   M   M   M   M   M \s
+       O   O   O   O   O   M \s
+       O   O   O   O   O   O \s
+       O   M   O   O   O   O \s
+       O   M   M   M   M   O \s
+       O   M   M   M   M   O \s
       Your Board:\s
-       M   H   H   H   M   M \s
-       M   M   M   M   M   O \s
-       H   H   H   H   C   C \s
-       M   H   H   H   H   M \s
-       O   O   M   M   M   M \s
-       O   B   H   H   B   H \s
+       M   M   C   O   M   H \s
+       O   M   C   O   M   H \s
+       H   M   C   O   M   H \s
+       D   O   H   H   M   B \s
+       D   O   C   S   O   B \s
+       H   O   C   S   O   M \s
+      Please enter 4 valid shots
+      ---------------------------------------
+      ---------------------------------------
+      Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
+      Opponent's Board:\s
+       M   M   M   M   M   M \s
+       O   O   O   O   O   M \s
+       H   O   H   O   O   O \s
+       O   M   O   O   O   O \s
+       O   M   M   M   M   M \s
+       O   M   M   M   M   M \s
+      Your Board:\s
+       M   M   C   M   M   H \s
+       O   M   C   O   M   H \s
+       H   M   C   O   M   H \s
+       D   O   H   H   M   B \s
+       H   M   C   S   M   B \s
+       H   O   C   S   O   M \s
+      Please enter 4 valid shots
+      ---------------------------------------
+      ---------------------------------------
+      Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
+      Opponent's Board:\s
+       M   M   M   M   M   M \s
+       O   O   H   O   O   M \s
+       H   O   H   O   H   O \s
+       H   M   O   O   H   O \s
+       O   M   M   M   M   M \s
+       O   M   M   M   M   M \s
+      Your Board:\s
+       M   M   C   M   M   H \s
+       O   M   C   M   M   H \s
+       H   M   C   O   M   H \s
+       D   M   H   H   M   B \s
+       H   M   C   S   M   B \s
+       H   O   H   H   O   M \s
+      Please enter 4 valid shots
+      ---------------------------------------
+      ---------------------------------------
+      Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
+      Opponent's Board:\s
+       M   M   M   M   M   M \s
+       O   H   H   O   O   M \s
+       H   O   H   H   H   O \s
+       H   M   H   O   H   O \s
+       O   M   M   M   M   M \s
+       H   M   M   M   M   M \s
+      Your Board:\s
+       M   M   C   M   M   H \s
+       M   M   C   M   M   H \s
+       H   M   H   M   M   H \s
+       D   M   H   H   M   B \s
+       H   M   C   S   M   H \s
+       H   O   H   H   O   M \s
+      Please enter 4 valid shots
+      ---------------------------------------
+      ---------------------------------------
+      Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
+      Opponent's Board:\s
+       M   M   M   M   M   M \s
+       O   H   H   O   H   M \s
+       H   H   H   H   H   H \s
+       H   M   H   O   H   O \s
+       H   M   M   M   M   M \s
+       H   M   M   M   M   M \s
+      Your Board:\s
+       M   M   C   M   M   H \s
+       M   M   H   M   M   H \s
+       H   M   H   M   M   H \s
+       H   M   H   H   M   H \s
+       H   M   C   S   M   H \s
+       H   M   H   H   O   M \s
       Please enter 2 valid shots
       ---------------------------------------
       ---------------------------------------
       Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
       Opponent's Board:\s
-       H   H   O   H   H   M \s
-       O   H   O   M   M   M \s
-       H   H   O   H   H   O \s
-       M   M   O   H   H   O \s
-       M   M   M   M   M   O \s
        M   M   M   M   M   M \s
+       O   H   H   O   H   M \s
+       H   H   H   H   H   H \s
+       H   M   H   O   H   O \s
+       H   M   M   M   M   M \s
+       H   M   M   M   M   M \s
       Your Board:\s
-       M   H   H   H   M   M \s
+       M   M   C   M   M   H \s
+       M   M   H   M   M   H \s
+       H   M   H   M   M   H \s
+       H   M   H   H   M   H \s
+       H   M   C   S   M   H \s
+       H   M   H   H   O   M \s
+      Please enter 2 valid shots
+      ---------------------------------------
+      ---------------------------------------
+      Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
+      Opponent's Board:\s
        M   M   M   M   M   M \s
-       H   H   H   H   C   C \s
-       M   H   H   H   H   M \s
-       O   M   M   M   M   M \s
-       O   H   H   H   H   H \s
+       H   H   H   O   H   M \s
+       H   H   H   H   H   H \s
+       H   M   H   O   H   H \s
+       H   M   M   M   M   M \s
+       H   M   M   M   M   M \s
+      Your Board:\s
+       M   M   C   M   M   H \s
+       M   M   H   M   M   H \s
+       H   M   H   M   M   H \s
+       H   M   H   H   M   H \s
+       H   M   C   H   M   H \s
+       H   M   H   H   M   M \s
+      Please enter 1 valid shots
+      ---------------------------------------
+      ---------------------------------------
+      Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
+      Opponent's Board:\s
+       M   M   M   M   M   M \s
+       H   H   H   O   H   M \s
+       H   H   H   H   H   H \s
+       H   M   H   O   H   H \s
+       H   M   M   M   M   M \s
+       H   M   M   M   M   M \s
+      Your Board:\s
+       M   M   C   M   M   H \s
+       M   M   H   M   M   H \s
+       H   M   H   M   M   H \s
+       H   M   H   H   M   H \s
+       H   M   C   H   M   H \s
+       H   M   H   H   M   M \s
       Please enter 1 valid shots
       ---------------------------------------
       You Lost :(""";

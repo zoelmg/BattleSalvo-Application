@@ -66,17 +66,17 @@ class TwoBoardsTest {
   void updateMyBoard() {
 
     //check that the original coord status before method call is EMPTY or PRESENT
-    assertEquals(CoordStatus.EMPTY, exampleBoards.getMyBoard()[1][0].getStatus());
+    assertEquals(CoordStatus.EMPTY, exampleBoards.getMyBoard()[2][2].getStatus());
     assertEquals(CoordStatus.CARRIER, exampleBoards.getMyBoard()[0][0].getStatus());
 
     //call the methods to change coordinate status
     //Note: x and y are reversed because for 2D array Y goes first and X goes second
-    exampleBoards.updateMyBoard(new Coord(0, 1));
+    exampleBoards.updateMyBoard(new Coord(2, 2));
     exampleBoards.updateMyBoard(new Coord(0, 0));
 
 
     //check that now the status has changed to HIT or MiSS
-    assertEquals(CoordStatus.MISS, exampleBoards.getMyBoard()[1][0].getStatus());
+    assertEquals(CoordStatus.MISS, exampleBoards.getMyBoard()[2][2].getStatus());
     assertEquals(CoordStatus.HIT, exampleBoards.getMyBoard()[0][0].getStatus());
 
   }
@@ -97,11 +97,11 @@ class TwoBoardsTest {
     assertEquals(3, exampleBoards.getFleet().size());
 
     //hit all coordinates of that ship
-    exampleBoards.updateMyBoard(new Coord(1, 0));
-    exampleBoards.updateMyBoard(new Coord(2, 0));
-    exampleBoards.updateMyBoard(new Coord(3, 0));
-    exampleBoards.updateMyBoard(new Coord(4, 0));
-    exampleBoards.updateMyBoard(new Coord(5, 0));
+    exampleBoards.updateMyBoard(new Coord(0, 1));
+    exampleBoards.updateMyBoard(new Coord(0, 2));
+    exampleBoards.updateMyBoard(new Coord(0, 3));
+    exampleBoards.updateMyBoard(new Coord(0, 4));
+    exampleBoards.updateMyBoard(new Coord(0, 5));
     exampleBoards.updateRemainingShips();
 
     //now check the size of the ship has gone down to 2

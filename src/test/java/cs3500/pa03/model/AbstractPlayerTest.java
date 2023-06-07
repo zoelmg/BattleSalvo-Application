@@ -52,7 +52,7 @@ class AbstractPlayerTest {
    */
   @Test
   void testName() {
-    assertEquals("Not yet needed for PA03", examplePlayer.name());
+    assertEquals("zoelmg", examplePlayer.name());
   }
 
   /**
@@ -66,8 +66,8 @@ class AbstractPlayerTest {
     assertEquals(2, filteredExampleList.size());
     assertEquals(0, filteredExampleList.get(0).getXpos());
     assertEquals(0, filteredExampleList.get(0).getYpos());
-    assertEquals(1, filteredExampleList.get(1).getXpos());
-    assertEquals(0, filteredExampleList.get(1).getYpos());
+    assertEquals(0, filteredExampleList.get(1).getXpos());
+    assertEquals(2, filteredExampleList.get(1).getYpos());
   }
 
   /**
