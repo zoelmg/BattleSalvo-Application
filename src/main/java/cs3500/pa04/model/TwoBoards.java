@@ -78,7 +78,7 @@ public class TwoBoards {
     List<Ship> placedShips = new ArrayList<>();
 
     //place carriers
-    for (int i = 0; i < numShips; i+=1) {
+    for (int i = 0; i < numShips; i += 1) {
       //get one random placement
       int randNum = random.nextInt(0, carrierPlaces.size());
       List<Coord> newPlace = carrierPlaces.get(randNum);
@@ -89,7 +89,7 @@ public class TwoBoards {
         placedShips.add(new Ship(newPlace, type));
         carrierPlaces.remove(randNum);
       } else {
-        i-=1;
+        i -= 1;
       }
     }
 
@@ -103,7 +103,9 @@ public class TwoBoards {
    */
   private boolean noOverlap(List<Coord> newPlace, List<Coord> takenPlaces) {
     for (Coord c : newPlace) {
-      if (takenPlaces.contains(c)) { return false; }
+      if (takenPlaces.contains(c)) {
+        return false;
+      }
     }
     return true;
   }
@@ -119,26 +121,26 @@ public class TwoBoards {
     List<List<Coord>> allPlacements = new ArrayList<>();
 
     //generate horizontal placements
-    for (int y = 0; y < boardHeight; y +=1) {
+    for (int y = 0; y < boardHeight; y += 1) {
       //horizontal placements in one row
-      for (int h = 0; h + shipSize <= boardWidth; h+=1) { // will give 0, 1 loop for 5 size ship & 6x6 board
+      for (int h = 0; h + shipSize <= boardWidth; h += 1) {
         List<Coord> thisPlace = new ArrayList<>();
         //single horizontal placement
-        for (int x = h; x < h + shipSize; x+=1) {
-          thisPlace.add(new Coord(x, y, type.getStatus()));
+        for (int x = h; x < h + shipSize; x += 1) {
+          thisPlace.add(new Coord(x, y, type.getShipStatusAtCoord()));
         }
         allPlacements.add(thisPlace);
       }
     }
 
     //generate vertical placements
-    for (int x = 0; x < boardWidth; x +=1) {
+    for (int x = 0; x < boardWidth; x += 1) {
       //vertical placements in one column
-      for (int v = 0; v + shipSize <= boardHeight; v+=1) { // will give 0, 1 loop for 5 size ship & 6x6 board
+      for (int v = 0; v + shipSize <= boardHeight; v += 1) {
         List<Coord> thisPlace = new ArrayList<>();
         //single vertical placement
-        for (int y = v; y < v + shipSize; y+=1) {
-          thisPlace.add(new Coord(x, y, type.getStatus()));
+        for (int y = v; y < v + shipSize; y += 1) {
+          thisPlace.add(new Coord(x, y, type.getShipStatusAtCoord()));
         }
         allPlacements.add(thisPlace);
       }
@@ -180,7 +182,8 @@ public class TwoBoards {
    */
   public boolean updateMyBoard(Coord opponentHit) {
     for (Coord myCoord : allOccupiedCoord) {
-      if (opponentHit.getXpos() == myCoord.getXpos() && opponentHit.getYpos() == myCoord.getYpos()) {
+      if (opponentHit.getXpos() == myCoord.getXpos() && opponentHit.getYpos()
+          == myCoord.getYpos()) {
         myBoard[opponentHit.getYpos()][opponentHit.getXpos()].setStatus(CoordStatus.HIT);
         return true;
       }

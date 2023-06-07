@@ -79,10 +79,10 @@ class AbstractPlayerTest {
   void testSuccessfulHits() {
     //In 2D arrays, Y Comes first and X comes later
     examplePlayer.successfulHits(exampleList);
-    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[0][0].getStatus());
-    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[0][1].getStatus());
-    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[2][2].getStatus());
-    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[2][0].getStatus());
+    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[0][0].getShipStatusAtCoord());
+    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[0][1].getShipStatusAtCoord());
+    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[2][2].getShipStatusAtCoord());
+    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[2][0].getShipStatusAtCoord());
 
   }
 */

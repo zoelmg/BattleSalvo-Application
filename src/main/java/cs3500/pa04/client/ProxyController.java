@@ -95,7 +95,6 @@ public class ProxyController implements Controller {
       case "successful-hits" -> handleSuccessfulHits(arguments);
       case "end-game" -> handleEndGame(arguments);
     }
-
   }
 
   /**

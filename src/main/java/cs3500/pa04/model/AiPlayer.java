@@ -32,7 +32,7 @@ public class AiPlayer extends AbstractPlayer {
       for (int j = 0; j < this.boards.getOpBoard()[0].length; j++) {
         System.out.print(this.boards.getOpBoard()[i][j].coordStatusAsString());
       }
-       System.out.println();
+      System.out.println();
 
     }
 

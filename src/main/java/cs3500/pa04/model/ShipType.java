@@ -45,7 +45,13 @@ public enum ShipType {
     return size;
   }
 
-  public CoordStatus getStatus() {
+  /**
+   * Determine the type of ship that should be
+   * at a coordinate
+   *
+   * @return the type of Ship at coordinate
+   */
+  public CoordStatus getShipStatusAtCoord() {
     return switch (this) {
       case BATTLESHIP -> CoordStatus.BATTLESHIP;
       case DESTROYER -> CoordStatus.DESTROYER;

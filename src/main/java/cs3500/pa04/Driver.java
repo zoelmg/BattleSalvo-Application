@@ -45,8 +45,8 @@ public class Driver {
         int port = Integer.parseInt(args[1]);
         runClient(host, port);
       } else {
-        throw new IllegalArgumentException("Enter 0 arguments to play against this CPU Player" +
-            "or Enter Host and Port to add this CPU Player to existing server");
+        throw new IllegalArgumentException("Enter 0 arguments to play against this CPU Player"
+            + "or Enter Host and Port to add this CPU Player to existing server");
       }
     } catch (IOException e) {
       System.out.println(":(");

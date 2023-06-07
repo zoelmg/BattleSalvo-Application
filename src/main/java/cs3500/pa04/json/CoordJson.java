@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param xpos the x of a coordinate
  * @param ypos the y of a coordinate
  */
-public record CoordJson (
-  @JsonProperty("x") int xpos,
-  @JsonProperty("y") int ypos) {
+public record CoordJson(
+    @JsonProperty("x") int xpos,
+    @JsonProperty("y") int ypos) {
 
 }
 

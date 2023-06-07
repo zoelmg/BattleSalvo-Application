@@ -13,6 +13,12 @@ import java.util.List;
 public record VolleyJson(
     @JsonProperty("coordinates") List<CoordJson> shots) {
 
+  /**
+   * For each CoordJson in the list of CoordJson,
+   * turn into Coord Representation
+   *
+   * @return a list of Coords
+   */
   public List<Coord> makeCoordList() {
     List<Coord> result = new ArrayList<>();
     for (CoordJson c : this.shots) {
