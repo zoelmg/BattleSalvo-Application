@@ -1,34 +1,23 @@
 package cs3500.pa04.client;
 
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa04.controller.Controller;
 import cs3500.pa04.json.CoordJson;
-import cs3500.pa04.json.FleetJson;
-import cs3500.pa04.json.GameResultJson;
 import cs3500.pa04.json.GameType;
 import cs3500.pa04.json.JsonUtils;
 import cs3500.pa04.json.MessageJson;
 import cs3500.pa04.json.PlayerJson;
-import cs3500.pa04.json.SetupJson;
-import cs3500.pa04.json.ShipDirection;
-import cs3500.pa04.json.ShipJson;
 import cs3500.pa04.json.VolleyJson;
 import cs3500.pa04.model.Coord;
-import cs3500.pa04.model.GameResult;
 import cs3500.pa04.model.Player;
-import cs3500.pa04.model.Ship;
-import cs3500.pa04.model.ShipType;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ProxyController implements Controller {
   private final Socket server;
@@ -52,16 +41,7 @@ public class ProxyController implements Controller {
 
   @Override
   public void run() {
-    try {
-      JsonParser parser = this.mapper.getFactory().createParser(this.in);
 
-      while (!this.server.isClosed()) {
-        MessageJson message = parser.readValueAs(MessageJson.class);
-        delegateMessage(message);
-      }
-    } catch (IOException e) {
-      // Disconnected from server or parsing exception
-    }
   }
 
   /**
@@ -71,7 +51,6 @@ public class ProxyController implements Controller {
    * @param message the MessageJSON used to determine what the server has sent
    */
   private void delegateMessage(MessageJson message) {
-    System.out.println("");
     String name = message.methodCall();
     JsonNode arguments = message.arguments();
 
@@ -95,53 +74,13 @@ public class ProxyController implements Controller {
   private void handleJoin(JsonNode arguments) {
     PlayerJson response = new PlayerJson(this.aiPlayer.name(), GameType.SINGLE);
 
-    JsonNode jsonArgResponse = JsonUtils.serializeRecord(response);
-    MessageJson joinResponse = new MessageJson("join", jsonArgResponse);
-    JsonNode jsonResponse = JsonUtils.serializeRecord(joinResponse);
+    JsonNode jsonResponse = JsonUtils.serializeRecord(response);
     this.out.println(jsonResponse);
   }
 
   private void handleSetup(JsonNode arguments) {
     //will require a SetupJson or some sort of object to take in server input
-    SetupJson setupArgs  = this.mapper.convertValue(arguments, SetupJson.class);
-    int height = setupArgs.height();
-    int width = setupArgs.width();
-
-    Map<ShipType, Integer> shipSpecs = new LinkedHashMap<>();
-    int carrierNum = setupArgs.fleetSpec().carrier();
-    int battleNum = setupArgs.fleetSpec().battleship();
-    int destroyerNum = setupArgs.fleetSpec().destroyer();
-    int subNum = setupArgs.fleetSpec().submarine();
-    shipSpecs.put(ShipType.CARRIER, carrierNum);
-    shipSpecs.put(ShipType.BATTLESHIP, battleNum);
-    shipSpecs.put(ShipType.DESTROYER, destroyerNum);
-    shipSpecs.put(ShipType.SUBMARINE, subNum);
-
-    List<Ship> fleet = this.aiPlayer.setup(height, width, shipSpecs);
-    List<ShipJson> fleetJson = new ArrayList<>();
-    for (Ship s : fleet) {
-      List<Coord> coords = s.getLocation();
-      Coord headCoord = coords.get(0);
-
-      //turn the head coord into a coordJson
-      CoordJson headJson = new CoordJson(headCoord.getXpos(), headCoord.getYpos());
-
-      //get ship direction
-      ShipDirection isVertical;
-      if (coords.get(0).getXpos() == coords.get(1).getXpos()) {
-        isVertical = ShipDirection.VERTICAL;
-      } else {
-        isVertical = ShipDirection.HORIZONTAL;
-      }
-      fleetJson.add(new ShipJson(headJson, coords.size(), isVertical));
-    }
-
-    //will return a FleetJson to server'
-    FleetJson response = new FleetJson(fleetJson);
-    JsonNode jsonArgResponse = JsonUtils.serializeRecord(response);
-    MessageJson setupResponse = new MessageJson("setup", jsonArgResponse);
-    JsonNode jsonResponse = JsonUtils.serializeRecord(setupResponse);
-    this.out.println(jsonResponse);
+    //will return a FleetJson to server
   }
 
   private void handleTakeShots(JsonNode arguments) {
@@ -153,9 +92,7 @@ public class ProxyController implements Controller {
     }
 
     VolleyJson response = new VolleyJson(coordJsons);
-    JsonNode jsonArgResponse = JsonUtils.serializeRecord(response);
-    MessageJson takeshotsResponse = new MessageJson("take-shots", jsonArgResponse);
-    JsonNode jsonResponse = JsonUtils.serializeRecord(takeshotsResponse);
+    JsonNode jsonResponse = JsonUtils.serializeRecord(response);
     this.out.println(jsonResponse);
   }
 
@@ -171,9 +108,7 @@ public class ProxyController implements Controller {
     }
 
     VolleyJson response = new VolleyJson(coordJsons);
-    JsonNode jsonArgResponse = JsonUtils.serializeRecord(response);
-    MessageJson reportdamageResponse = new MessageJson("report-damage", jsonArgResponse);
-    JsonNode jsonResponse = JsonUtils.serializeRecord(reportdamageResponse);
+    JsonNode jsonResponse = JsonUtils.serializeRecord(response);
     this.out.println(jsonResponse);
   }
 
@@ -189,13 +124,8 @@ public class ProxyController implements Controller {
   }
 
   private void handleEndGame(JsonNode arguments) {
-    GameResultJson serverArgs = this.mapper.convertValue(arguments, GameResultJson.class);
-    GameResult result = serverArgs.result();
-    String reason = serverArgs.reason();
-
-    this.aiPlayer.endGame(result, reason);
-
-    this.out.println(VOID_RESPONSE); //Is this the correct way to return nothing?!
+    //will require an EndJson to take in "result" and "reason" arguments from server
+    //no added info in return to server
   }
 
 }
