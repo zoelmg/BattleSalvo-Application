@@ -189,7 +189,6 @@ public class TwoBoards {
         myBoard[coord.getYpos()][coord.getXpos()] = coord;
       }
     }
-
   }
 
   /**

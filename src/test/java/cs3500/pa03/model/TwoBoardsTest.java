@@ -65,6 +65,7 @@ class TwoBoardsTest {
   @Test
   void updateMyBoard() {
 
+
     //check that the original coord status before method call is EMPTY or PRESENT
     assertEquals(CoordStatus.EMPTY, exampleBoards.getMyBoard()[2][2].getStatus());
     assertEquals(CoordStatus.CARRIER, exampleBoards.getMyBoard()[0][0].getStatus());
