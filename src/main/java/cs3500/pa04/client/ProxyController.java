@@ -3,6 +3,7 @@ package cs3500.pa04.client;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.NullNode;
 import cs3500.pa04.controller.Controller;
 import cs3500.pa04.json.CoordJson;
 import cs3500.pa04.json.FleetJson;
@@ -19,15 +20,12 @@ import cs3500.pa04.model.Coord;
 import cs3500.pa04.model.GameResult;
 import cs3500.pa04.model.Player;
 import cs3500.pa04.model.Ship;
-import cs3500.pa04.model.ShipType;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ProxyController implements Controller {
   private final Socket server;
@@ -176,8 +174,13 @@ public class ProxyController implements Controller {
 
     this.aiPlayer.successfulHits(coords);
 
+    MessageJson voidResponse = new MessageJson("successful-hits",
+        mapper.createObjectNode());
+
+    JsonNode response = JsonUtils.serializeRecord(voidResponse);
+
     //no added info in return to server
-    this.out.println(VOID_RESPONSE); //Is this the correct way to return nothing?!
+    this.out.println(response); //Is this the correct way to return nothing?!
   }
 
   private void handleEndGame(JsonNode arguments) {

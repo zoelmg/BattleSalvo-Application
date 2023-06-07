@@ -17,12 +17,4 @@ public record VolleyJson(
     return result;
   }
 
-  public static List<CoordJson> makeCoordJsonList(List<Coord> coords) {
-    List<CoordJson> result = new ArrayList<>();
-    for (Coord c : coords) {
-      result.add(new CoordJson(c.getXpos(), c.getYpos()));
-    }
-    return result;
-  }
-
 }

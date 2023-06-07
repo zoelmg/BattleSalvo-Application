@@ -26,6 +26,26 @@ public class AiPlayer extends AbstractPlayer {
    */
   @Override
   public List<Coord> takeShots() {
+
+    System.out.println("Opponent board from my view");
+    for (int i = 0; i < this.boards.getOpBoard().length; i++) {
+      for (int j = 0; j < this.boards.getOpBoard()[0].length; j++) {
+        System.out.print(this.boards.getOpBoard()[i][j].coordStatusAsString());
+      }
+       System.out.println();
+
+    }
+
+    System.out.println("My board from my view");
+    for (int i = 0; i < this.boards.getMyBoard().length; i++) {
+      for (int j = 0; j < this.boards.getMyBoard()[0].length; j++) {
+        System.out.print(this.boards.getMyBoard()[i][j].coordStatusAsString());
+      }
+      System.out.println();
+
+    }
+
+
     List<Coord> shots = new ArrayList<>();
     int shotsAvailable = boards.howManyShotsAvailable();
 

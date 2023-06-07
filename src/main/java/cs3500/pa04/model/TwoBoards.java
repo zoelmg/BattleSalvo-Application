@@ -144,40 +144,9 @@ public class TwoBoards {
       }
     }
 
-    /**
-    //generate horizontal placements
-    allPlacements.addAll(this.allPlacementsHelper(boardHeight, boardWidth, type));
-
-    //generate vertical placements
-    allPlacements.addAll(this.allPlacementsHelper(boardWidth, boardHeight, type));
-     */
-
     return allPlacements;
   }
 
-  /**
-   * @param sizeOne is first dimension's size of board
-   * @param sizeTwo is second dimensions size of board
-   * @param type is type of ship placement being calculated
-   * @return a list of all locations this ship type can be placed on
-   */
-  private List<List<Coord>> allPlacementsHelper(int sizeOne, int sizeTwo, ShipType type) {
-    int shipSize = type.getSize();
-    List<List<Coord>> allPlacements = new ArrayList<>();
-    //generate all placements placements
-    for (int y = 0; y < sizeOne; y +=1) {
-      //placements in one direction
-      for (int h = 0; h + shipSize <= sizeTwo; h+=1) {
-        List<Coord> thisPlace = new ArrayList<>();
-        //single placement
-        for (int x = h; x < h + shipSize; x+=1) {
-          thisPlace.add(new Coord(x, y, type.getStatus()));
-        }
-        allPlacements.add(thisPlace);
-      }
-    }
-    return allPlacements;
-  }
 
   /**
    * setup myBoard with where this user's fleets are located
@@ -197,7 +166,7 @@ public class TwoBoards {
   private void setupBoard(Coord[][] board) {
     for (int i = 0; i < board.length; i++) {
       for (int j = 0; j < board[i].length; j++) {
-        board[i][j] = new Coord(i, j);
+        board[i][j] = new Coord(j, i);
       }
     }
   }
