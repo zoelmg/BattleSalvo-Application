@@ -11,7 +11,6 @@ import cs3500.pa04.json.JsonUtils;
 import cs3500.pa04.json.MessageJson;
 import cs3500.pa04.json.SetupJson;
 import cs3500.pa04.model.AiPlayer;
-import cs3500.pa04.model.Ship;
 import cs3500.pa04.model.ShipType;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
