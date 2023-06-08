@@ -9,11 +9,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa04.client.ProxyDealer;
 import cs3500.pa04.json.JsonUtils;
 import cs3500.pa04.json.MessageJson;
+import cs3500.pa04.json.SetupJson;
 import cs3500.pa04.model.AiPlayer;
+import cs3500.pa04.model.Ship;
+import cs3500.pa04.model.ShipType;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -58,6 +63,45 @@ public class ProxyDealerTest {
 
     String expected = "{\"method-name\":\"join\",\"arguments\""
         + ":{\"name\":\"zoelmg\",\"game-type\":\"SINGLE\"}}\n";
+    assertEquals(expected, logToString());
+  }
+
+  /**
+   * Check that the server returns a guess when given a hint.
+   */
+  @Test
+  public void testVoidSetupGame() {
+    Map<ShipType, Integer> exampleSpecs = new LinkedHashMap<>();
+    exampleSpecs.put(ShipType.CARRIER, 2);
+    exampleSpecs.put(ShipType.BATTLESHIP, 1);
+    exampleSpecs.put(ShipType.DESTROYER, 1);
+    exampleSpecs.put(ShipType.SUBMARINE, 1);
+
+    SetupJson exampleSetupJson = new SetupJson(6, 8, exampleSpecs);
+    JsonNode exampleSetupJsonNode = JsonUtils.serializeRecord(exampleSetupJson);
+
+    // Prepare sample message
+    MessageJson sampleJoinMessage = new MessageJson("setup",  exampleSetupJsonNode);
+    JsonNode sampleJoinMessageJson = JsonUtils.serializeRecord(sampleJoinMessage);
+
+    // Create the client with all necessary messages
+    Mocket socket = new Mocket(this.testLog, List.of(sampleJoinMessageJson.toString()));
+
+    // Create a Dealer
+    Random random = new Random(10);
+    this.dealer = new ProxyDealer(socket, new AiPlayer(random));
+
+    // run the dealer and verify the response
+    this.dealer.run();
+
+    String expected = "{\"method-name\":\"setup\",\"arguments\":{\"fleet\"" +
+        ":[{\"coord\":{\"x\":2,\"y\":1},\"length\":6" +
+        ",\"direction\":\"VERTICAL\"},{\"coord\":{\"x\":3" +
+        ",\"y\":2},\"length\":6,\"direction\":\"VERTICAL\"}" +
+        ",{\"coord\":{\"x\":0,\"y\":0},\"length\":5" +
+        ",\"direction\":\"VERTICAL\"},{\"coord\":{\"x\":4,\"y\":2},\"length\":4" +
+        ",\"direction\":\"VERTICAL\"},{\"coord\":{\"x\":3,\"y\":1},\"length\":3" +
+        ",\"direction\":\"HORIZONTAL\"}]}}\n";
     assertEquals(expected, logToString());
   }
 
