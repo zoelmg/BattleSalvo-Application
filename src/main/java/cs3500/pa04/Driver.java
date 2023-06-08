@@ -1,6 +1,6 @@
 package cs3500.pa04;
 
-import cs3500.pa04.client.ProxyController;
+import cs3500.pa04.client.ProxyDealer;
 import cs3500.pa04.controller.BattleSalvoController;
 import cs3500.pa04.controller.Controller;
 import cs3500.pa04.model.AbstractPlayer;
@@ -72,7 +72,7 @@ public class Driver {
   private static void runClient(String host, int port) throws IOException {
     Socket server = new Socket(host, port);
     Random random = new Random();
-    Controller controller = new ProxyController(server, new AiPlayer(random));
+    Controller controller = new ProxyDealer(server, new AiPlayer(random));
     controller.run();
   }
 }

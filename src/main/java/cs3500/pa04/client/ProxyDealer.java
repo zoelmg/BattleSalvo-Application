@@ -30,7 +30,7 @@ import java.util.List;
  * Represent a proxy controller that will communicate
  * between a Player and a Server
  */
-public class ProxyController implements Controller {
+public class ProxyDealer implements Controller {
   private final Socket server;
   private final Player aiPlayer;
   private final InputStream in;
@@ -46,7 +46,7 @@ public class ProxyController implements Controller {
    * @param server The server that will host the game
    * @param aiPlayer This CPU's Player
    */
-  public ProxyController(Socket server, Player aiPlayer) {
+  public ProxyDealer(Socket server, Player aiPlayer) {
     this.server = server;
     this.aiPlayer = aiPlayer;
     try {
