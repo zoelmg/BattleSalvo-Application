@@ -27,12 +27,18 @@ public class ValidEntries {
    */
   public static boolean validFleet(Map<ShipType, Integer> fleet, int maxFleetSize) {
     int totalFleet = 0;
+    boolean notZero = true;
 
     for (Map.Entry<ShipType, Integer> value : fleet.entrySet()) {
       totalFleet = totalFleet + value.getValue();
+      if (value.getValue() <= 0) {
+        notZero = false;
+        break;
+      }
+
     }
 
-    return (fleet.size() == 4 && totalFleet <= maxFleetSize && totalFleet > 0);
+    return (fleet.size() == 4 && totalFleet <= maxFleetSize && totalFleet > 0 && notZero);
   }
 
 

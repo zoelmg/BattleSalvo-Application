@@ -407,8 +407,19 @@ public class ExpectedGameOutput {
       Hello! Welcome to the OOD BattleSalvo Game!
       Please enter a valid height and width below
       ---------------------------------------
+      ---------------------------------------
+      Uh Oh! You've entered invalid dimensions.\s
+      Please remember that the height and width of the game
+      must be in the range (6, 15), inclusive.
+      Try again!
+      ---------------------------------------
       Please enter your fleet in the order [Carrier, Battleship, Destroyer, Submarine].
       Remember, your fleet may not exceed size 6
       ---------------------------------------
+      ---------------------------------------
+      Uh Oh! You've entered invalid fleet sizes.
+      Please enter your fleet in the order [Carrier, Battleship, Destroyer, Submarine].
+      Try again!
+      Remember, your fleet may not exceed size 6
       Tied""";
 }

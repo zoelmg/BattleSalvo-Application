@@ -29,7 +29,10 @@ class BattleSalvoControllerTest {
     Random randomP1 = new Random(24);
     Random randomP2 = new Random(24);
     Appendable output = new StringBuilder();
-    String userInput = "6 6 1 1 1 1";
+    String userInput = "5 5 "
+        + "6 6 "
+        + "0 0 2 0 "
+        + "1 1 1 1";
     Scanner scan = new Scanner(userInput);
     View singlePlayerView = new SingleManualPlayerView(scan, output);
     Player playerOne = new AiPlayer(randomP1);

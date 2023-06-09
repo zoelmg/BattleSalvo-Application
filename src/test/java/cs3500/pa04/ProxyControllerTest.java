@@ -1,6 +1,7 @@
 package cs3500.pa04;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -52,6 +53,25 @@ public class ProxyControllerTest {
     exampleSpecs.put(ShipType.BATTLESHIP, 1);
     exampleSpecs.put(ShipType.DESTROYER, 1);
     exampleSpecs.put(ShipType.SUBMARINE, 1);
+  }
+
+  /**
+   * tests default case for delegateMessage() method
+   */
+  @Test
+  void testInvalidDelegateMessage() {
+    // Prepare sample message
+    MessageJson invalidMessage = new MessageJson("bye",  mapper.createObjectNode());
+    JsonNode invalidMessageJson = JsonUtils.serializeRecord(invalidMessage);
+
+    // Create the client with all necessary messages
+    Mocket socket = new Mocket(this.testLog, List.of(invalidMessageJson.toString()));
+
+    // Create a Dealer
+    this.dealer = new ProxyController(socket, aiPlayer);
+
+    // run the dealer and verify the response
+    assertThrows(IllegalArgumentException.class, () -> this.dealer.run());
   }
 
   /**

@@ -63,9 +63,9 @@ class ValidEntriesTest {
   void testValidFleet() {
     Map<ShipType, Integer> ex1 = new LinkedHashMap<>();
     ex1.put(ShipType.CARRIER, 2);
-    ex1.put(ShipType.SUBMARINE, 0);
-    ex1.put(ShipType.DESTROYER, 0);
-    ex1.put(ShipType.BATTLESHIP, 0);
+    ex1.put(ShipType.SUBMARINE, 1);
+    ex1.put(ShipType.DESTROYER, 1);
+    ex1.put(ShipType.BATTLESHIP, 1);
     assertTrue(ValidEntries.validFleet(ex1, 6));
 
     Map<ShipType, Integer> ex2 = new LinkedHashMap<>();
