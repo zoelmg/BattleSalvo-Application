@@ -3,8 +3,6 @@ package cs3500.pa03.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import cs3500.pa04.model.Coord;
-import cs3500.pa04.model.CoordStatus;
 import org.junit.jupiter.api.Test;
 
 

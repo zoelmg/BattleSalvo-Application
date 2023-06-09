@@ -3,10 +3,6 @@ package cs3500.pa03.model;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import cs3500.pa04.model.Coord;
-import cs3500.pa04.model.ShipType;
-import cs3500.pa04.model.TwoBoards;
-import cs3500.pa04.model.ValidEntries;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;

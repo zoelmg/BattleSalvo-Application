@@ -33,11 +33,21 @@ public class Mocket extends Socket {
     this.testInputs = new ByteArrayInputStream(stringWriter.toString().getBytes());
   }
 
+  /**
+   * get the inputStream of this mocket
+   *
+   * @return the input stream of this mocket
+   */
   @Override
   public InputStream getInputStream() {
     return this.testInputs;
   }
 
+  /**
+   * a getter method for the outputStream of this mocket
+   *
+   * @return the outputStream of this mocket
+   */
   @Override
   public OutputStream getOutputStream() {
     return this.testLog;

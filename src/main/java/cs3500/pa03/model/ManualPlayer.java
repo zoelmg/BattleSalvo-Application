@@ -1,6 +1,6 @@
-package cs3500.pa04.model;
+package cs3500.pa03.model;
 
-import cs3500.pa04.view.View;
+import cs3500.pa03.view.View;
 import java.util.List;
 import java.util.Random;
 
@@ -8,7 +8,7 @@ import java.util.Random;
  * Represents a Manual Player in the game of BattleSalvo
  */
 public class ManualPlayer extends AbstractPlayer {
-  private View userEntry;
+  private final View userEntry;
 
   /**
    * Initialize a Manual Player
@@ -29,7 +29,6 @@ public class ManualPlayer extends AbstractPlayer {
    */
   @Override
   public List<Coord> takeShots() {
-    int shotsAvailable = this.boards.howManyShotsAvailable();
     List<Coord> mostRecentAttempt;
     do {
       mostRecentAttempt = this.userEntry.showBoard(this.boards);

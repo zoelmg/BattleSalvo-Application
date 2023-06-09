@@ -1,0 +1,3 @@
+- Replaced Ship generation code with more efficient algorithm
+- Fixed small bug within TwoBoards setupMyBoardWithFleet() methods where i and j are flipped
+- Stops the while loop in AiPlayer takeShot when available shots are 0

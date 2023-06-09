@@ -1,4 +1,4 @@
-package cs3500.pa04.model;
+package cs3500.pa03.model;
 
 /**
  * Represent a Coordinate on the board of BattleSalvo

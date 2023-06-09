@@ -2,13 +2,11 @@ package cs3500.pa03.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import cs3500.pa04.controller.BattleSalvoController;
-import cs3500.pa04.controller.Controller;
-import cs3500.pa04.model.AiPlayer;
-import cs3500.pa04.model.ManualPlayer;
-import cs3500.pa04.model.Player;
-import cs3500.pa04.view.SingleManualPlayerView;
-import cs3500.pa04.view.View;
+import cs3500.pa03.model.AiPlayer;
+import cs3500.pa03.model.ManualPlayer;
+import cs3500.pa03.model.Player;
+import cs3500.pa03.view.SingleManualPlayerView;
+import cs3500.pa03.view.View;
 import java.io.StringReader;
 import java.util.Random;
 import java.util.Scanner;
@@ -26,31 +24,16 @@ class BattleSalvoControllerTest {
   /**
    * The manual player ties with the AI player
    */
-  /*
   @Test
   void testUserTied() {
     Random randomP1 = new Random(24);
-    Random randomP2 = new Random(30);
-
-    String userInput = """
-        5 5 
-        6 6 
-        0 0 0 0 
-        1 1 1 1 
-        0 0 0 1 0 2 0 3 0 4 0 5
-        1 0 1 1 1 2 1 3 1 4 1 5
-        2 0 2 1 2 2 2 3 2 4 2 5
-        3 0 3 1 3 2 3 3 3 4 3 5
-        4 0 4 1 4 2 4 3 4 4 4 5
-        5 0 5 1 5 2 5 3 5 4 5 5""";
-    Readable input = new StringReader(userInput);
-
+    Random randomP2 = new Random(24);
     Appendable output = new StringBuilder();
-    Scanner scan = new Scanner(input);
-
+    String userInput = "6 6 1 1 1 1";
+    Scanner scan = new Scanner(userInput);
     View singlePlayerView = new SingleManualPlayerView(scan, output);
     Player playerOne = new AiPlayer(randomP1);
-    Player playerTwo = new ManualPlayer(randomP2, singlePlayerView);
+    Player playerTwo = new AiPlayer(randomP2);
 
     Controller singlePlayerController = new BattleSalvoController(playerOne,
         playerTwo, singlePlayerView, scan);
@@ -61,7 +44,6 @@ class BattleSalvoControllerTest {
     assertEquals(ExpectedGameOutput.userTie, output.toString());
   }
 
-   */
   /**
    * The manual player loses the game against the AI player
    */

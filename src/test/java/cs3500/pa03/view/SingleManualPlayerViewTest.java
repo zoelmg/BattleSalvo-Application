@@ -4,9 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import cs3500.pa04.view.SingleManualPlayerView;
-import cs3500.pa04.view.View;
+import cs3500.pa03.model.ShipType;
+import cs3500.pa03.model.TwoBoards;
 import java.io.StringReader;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -114,11 +117,10 @@ class SingleManualPlayerViewTest {
    * Test that show board is displaying boards when it is called and given its
    * respective parameters
    */
-  /*
   @Test
   void testValidShowBoard() {
     Map<ShipType, Integer> exampleDesiredFleets = new LinkedHashMap<>();
-    exampleDesiredFleets.put(ShipType.CARRIER, 2);
+    exampleDesiredFleets.put(ShipType.CARRIER, 1);
     exampleDesiredFleets.put(ShipType.BATTLESHIP, 0);
     exampleDesiredFleets.put(ShipType.DESTROYER, 0);
     exampleDesiredFleets.put(ShipType.SUBMARINE, 0);
@@ -126,50 +128,29 @@ class SingleManualPlayerViewTest {
 
     TwoBoards exampleBoards = new TwoBoards(6, 6, exampleDesiredFleets, seededRandom);
 
-    exampleView.showBoard(exampleBoards, 1);
-    assertEquals("---------------------------------------\n"
-        + "Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)\n"
-        + "Opponent's Board: \n"
-        + " O   O   O   O   O   O  \n"
-        + " O   O   O   O   O   O  \n"
-        + " O   O   O   O   O   O  \n"
-        + " O   O   O   O   O   O  \n"
-        + " O   O   O   O   O   O  \n"
-        + " O   O   O   O   O   O  \n"
-        + "Your Board: \n"
-        + " O   O   P   O   P   O  \n"
-        + " O   O   P   O   P   O  \n"
-        + " O   O   P   O   P   O  \n"
-        + " O   O   P   O   P   O  \n"
-        + " O   O   P   O   P   O  \n"
-        + " O   O   P   O   P   O  \n"
-        + "Please enter 1 valid shots\n"
-        + "---------------------------------------\n", exampleOut.toString());
+    exampleView.showBoard(exampleBoards);
+    assertEquals("""
+        ---------------------------------------
+        Direction: Top Left is (0,0), move right for (1, 0) and move down for (0, 1)
+        Opponent's Board:\s
+         O   O   O   O   O   O \s
+         O   O   O   O   O   O \s
+         O   O   O   O   O   O \s
+         O   O   O   O   O   O \s
+         O   O   O   O   O   O \s
+         O   O   O   O   O   O \s
+        Your Board:\s
+         O   O   O   C   O   O \s
+         O   O   O   C   O   O \s
+         O   O   O   C   O   O \s
+         O   O   O   C   O   O \s
+         O   O   O   C   O   O \s
+         O   O   O   C   O   O \s
+        Please enter 1 valid shots
+        ---------------------------------------
+        """, exampleOut.toString());
   }
-*/
-  /**
-   * Test that show board correctly handles invalid inputs
-   */
 
-  /*
-  void testInvalidShowBoard() {
-    Map<ShipType, Integer> exampleDesiredFleets = new LinkedHashMap<>();
-    exampleDesiredFleets.put(ShipType.CARRIER, 2);
-    exampleDesiredFleets.put(ShipType.BATTLESHIP, 0);
-    exampleDesiredFleets.put(ShipType.DESTROYER, 0);
-    exampleDesiredFleets.put(ShipType.SUBMARINE, 0);
-    Random seededRandom = new Random(10);
-
-    TwoBoards exampleBoards = new TwoBoards(6, 6, exampleDesiredFleets, seededRandom);
-
-
-    exampleView.showBoard(exampleBoards, 1);
-    //check that showBoard does not throw an error but continues the game
-    //when an input not of integer value is taken in
-    assertDoesNotThrow(() -> exampleView.showBoard(exampleBoards, 1));
-    assertThrows(RuntimeException.class, () -> exampleErrorView.showBoard(exampleBoards, 2));
-  }
-*/
 
   /**
    * Test that a given message will be correctly displayed

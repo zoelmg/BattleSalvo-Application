@@ -1,4 +1,4 @@
-package cs3500.pa04.model;
+package cs3500.pa03.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -120,6 +120,10 @@ public class TwoBoards {
     int shipSize = type.getSize();
     List<List<Coord>> allPlacements = new ArrayList<>();
 
+
+    //The below two loops cannot be abstracted since the Coord() constructor
+    //needs to take height and width arguments in a set order.
+
     //generate horizontal placements
     for (int y = 0; y < boardHeight; y += 1) {
       //horizontal placements in one row
@@ -145,7 +149,6 @@ public class TwoBoards {
         allPlacements.add(thisPlace);
       }
     }
-
     return allPlacements;
   }
 

@@ -3,7 +3,11 @@ package cs3500.pa04.client;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cs3500.pa04.controller.Controller;
+import cs3500.pa03.controller.Controller;
+import cs3500.pa03.model.Coord;
+import cs3500.pa03.model.GameResult;
+import cs3500.pa03.model.Player;
+import cs3500.pa03.model.Ship;
 import cs3500.pa04.json.CoordJson;
 import cs3500.pa04.json.FleetJson;
 import cs3500.pa04.json.GameResultJson;
@@ -15,10 +19,6 @@ import cs3500.pa04.json.SetupJson;
 import cs3500.pa04.json.ShipDirection;
 import cs3500.pa04.json.ShipJson;
 import cs3500.pa04.json.VolleyJson;
-import cs3500.pa04.model.Coord;
-import cs3500.pa04.model.GameResult;
-import cs3500.pa04.model.Player;
-import cs3500.pa04.model.Ship;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -30,14 +30,12 @@ import java.util.List;
  * Represent a proxy controller that will communicate
  * between a Player and a Server
  */
-public class ProxyDealer implements Controller {
+public class ProxyController implements Controller {
   private final Socket server;
   private final Player aiPlayer;
   private final InputStream in;
   private final PrintStream out;
   private final ObjectMapper mapper = new ObjectMapper();
-  private static final JsonNode VOID_RESPONSE =
-      new ObjectMapper().getNodeFactory().textNode("void");
 
   /**
    * Initialize the ProxyController that will be receiving
@@ -46,7 +44,7 @@ public class ProxyDealer implements Controller {
    * @param server The server that will host the game
    * @param aiPlayer This CPU's Player
    */
-  public ProxyDealer(Socket server, Player aiPlayer) {
+  public ProxyController(Socket server, Player aiPlayer) {
     this.server = server;
     this.aiPlayer = aiPlayer;
     try {
@@ -94,6 +92,7 @@ public class ProxyDealer implements Controller {
       case "report-damage" -> handleReportDamage(arguments);
       case "successful-hits" -> handleSuccessfulHits(arguments);
       case "end-game" -> handleEndGame(arguments);
+      default -> throw new IllegalArgumentException("not a valid message");
     }
   }
 
@@ -210,7 +209,6 @@ public class ProxyDealer implements Controller {
    *                  that successfully hit the opponent's ships
    */
   private void handleSuccessfulHits(JsonNode arguments) {
-    //will take in a VolleyJson of shots that hit opponents ships
     VolleyJson successfulHits = this.mapper.convertValue(arguments, VolleyJson.class);
     List<Coord> coords = successfulHits.makeCoordList();
 
@@ -219,7 +217,6 @@ public class ProxyDealer implements Controller {
     MessageJson voidResponse = new MessageJson("successful-hits",
         mapper.createObjectNode());
     JsonNode response = JsonUtils.serializeRecord(voidResponse);
-
 
     this.out.println(response);
   }
@@ -238,7 +235,10 @@ public class ProxyDealer implements Controller {
     String reason = serverArgs.reason();
 
     this.aiPlayer.endGame(result, reason);
-    this.out.println(VOID_RESPONSE);
+    MessageJson voidResponse = new MessageJson("end-game",
+        mapper.createObjectNode());
+    JsonNode response = JsonUtils.serializeRecord(voidResponse);
+    this.out.println(response);
   }
 
 }

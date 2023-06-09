@@ -1,11 +1,11 @@
-package cs3500.pa04.controller;
+package cs3500.pa03.controller;
 
-import cs3500.pa04.model.Coord;
-import cs3500.pa04.model.Player;
-import cs3500.pa04.model.Ship;
-import cs3500.pa04.model.ShipType;
-import cs3500.pa04.model.ValidEntries;
-import cs3500.pa04.view.View;
+import cs3500.pa03.model.Coord;
+import cs3500.pa03.model.Player;
+import cs3500.pa03.model.Ship;
+import cs3500.pa03.model.ShipType;
+import cs3500.pa03.model.ValidEntries;
+import cs3500.pa03.view.View;
 import java.util.InputMismatchException;
 import java.util.LinkedHashMap;
 import java.util.List;

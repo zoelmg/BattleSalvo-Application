@@ -1,7 +1,7 @@
-package cs3500.pa04.view;
+package cs3500.pa03.view;
 
-import cs3500.pa04.model.Coord;
-import cs3500.pa04.model.TwoBoards;
+import cs3500.pa03.model.Coord;
+import cs3500.pa03.model.TwoBoards;
 import java.util.List;
 
 /**

@@ -2,11 +2,6 @@ package cs3500.pa03.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import cs3500.pa04.model.AbstractPlayer;
-import cs3500.pa04.model.AiPlayer;
-import cs3500.pa04.model.Coord;
-import cs3500.pa04.model.CoordStatus;
-import cs3500.pa04.model.ShipType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -43,8 +38,8 @@ class AbstractPlayerTest {
     examplePlayer.setup(6, 6, exampleDesiredFleets);
 
 
-    exampleList = new ArrayList<>(Arrays.asList(new Coord(0, 0), new Coord(1, 0),
-      new Coord(2, 2), new Coord(0, 2)));
+    exampleList = new ArrayList<>(Arrays.asList(new Coord(0, 0),
+        new Coord(1, 0), new Coord(2, 2), new Coord(0, 2)));
   }
 
   /**
@@ -74,16 +69,15 @@ class AbstractPlayerTest {
    * Test the method SuccessfulHits and check the method correctly
    * updates the status of opponent's board to HIT
    */
-  /*
   @Test
   void testSuccessfulHits() {
     //In 2D arrays, Y Comes first and X comes later
     examplePlayer.successfulHits(exampleList);
-    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[0][0].getShipStatusAtCoord());
-    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[0][1].getShipStatusAtCoord());
-    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[2][2].getShipStatusAtCoord());
-    assertEquals(CoordStatus.HIT, examplePlayer.boards.getOpBoard()[2][0].getShipStatusAtCoord());
+    assertEquals(" H ", examplePlayer.boards.getOpBoard()[0][0].coordStatusAsString());
+    assertEquals(" H ", examplePlayer.boards.getOpBoard()[0][1].coordStatusAsString());
+    assertEquals(" H ", examplePlayer.boards.getOpBoard()[2][2].coordStatusAsString());
+    assertEquals(" H ", examplePlayer.boards.getOpBoard()[2][0].coordStatusAsString());
 
   }
-*/
+
 }
