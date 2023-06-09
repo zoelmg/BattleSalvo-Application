@@ -21,10 +21,11 @@ public class Coord {
   }
 
   /**
-   * Initialize a coordinate on the board
+   * Initialize a coordinate on the board with its given status
    *
    * @param xpos the horizontal index of the coordinate on the board
    * @param ypos the vertical index of the coordinate on the board
+   * @param status the status of the coordinate
    */
   public Coord(int xpos, int ypos, CoordStatus status) {
     this.xpos = xpos;
