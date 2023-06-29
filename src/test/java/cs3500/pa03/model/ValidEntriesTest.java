@@ -3,6 +3,7 @@ package cs3500.pa03.model;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
@@ -95,16 +96,16 @@ class ValidEntriesTest {
   @Test
   void testPlayerShotAlreadyOccupied() {
     Coord validAttempt1 = new Coord(0, 0);
-    assertTrue(ValidEntries.validPlayerShot(validAttempt1, exampleBoards));
+    assertTrue(ValidEntries.validPlayerShot(validAttempt1, exampleBoards, new ArrayList<>()));
 
     Coord validAttempt2 = new Coord(2, 3);
-    assertTrue(ValidEntries.validPlayerShot(validAttempt2, exampleBoards));
+    assertTrue(ValidEntries.validPlayerShot(validAttempt2, exampleBoards, new ArrayList<>()));
 
     Coord invalidAttempt1 = new Coord(3, 4);
-    assertFalse(ValidEntries.validPlayerShot(invalidAttempt1, exampleBoards));
+    assertFalse(ValidEntries.validPlayerShot(invalidAttempt1, exampleBoards, new ArrayList<>()));
 
     Coord invalidAttempt2 = new Coord(5, 4);
-    assertFalse(ValidEntries.validPlayerShot(invalidAttempt2, exampleBoards));
+    assertFalse(ValidEntries.validPlayerShot(invalidAttempt2, exampleBoards, new ArrayList<>()));
 
 
   }
@@ -116,13 +117,13 @@ class ValidEntriesTest {
   @Test
   void testPlayerShotInvalidX() {
     Coord invalidAttempt3 = new Coord(-1, 0);
-    assertFalse(ValidEntries.validPlayerShot(invalidAttempt3, exampleBoards));
+    assertFalse(ValidEntries.validPlayerShot(invalidAttempt3, exampleBoards, new ArrayList<>()));
 
     Coord invalidAttempt5 = new Coord(-1, -2);
-    assertFalse(ValidEntries.validPlayerShot(invalidAttempt5, exampleBoards));
+    assertFalse(ValidEntries.validPlayerShot(invalidAttempt5, exampleBoards, new ArrayList<>()));
 
     Coord invalidAttempt7 = new Coord(10, 5);
-    assertFalse(ValidEntries.validPlayerShot(invalidAttempt7, exampleBoards));
+    assertFalse(ValidEntries.validPlayerShot(invalidAttempt7, exampleBoards, new ArrayList<>()));
   }
 
 
@@ -133,14 +134,14 @@ class ValidEntriesTest {
   @Test
   void testPlayerShotInvalidY() {
     Coord invalidAttempt4 = new Coord(0, -2);
-    assertFalse(ValidEntries.validPlayerShot(invalidAttempt4, exampleBoards));
+    assertFalse(ValidEntries.validPlayerShot(invalidAttempt4, exampleBoards, new ArrayList<>()));
 
 
     Coord invalidAttempt6 = new Coord(-1, -2);
-    assertFalse(ValidEntries.validPlayerShot(invalidAttempt6, exampleBoards));
+    assertFalse(ValidEntries.validPlayerShot(invalidAttempt6, exampleBoards, new ArrayList<>()));
 
 
     Coord invalidAttempt8 = new Coord(4, 8);
-    assertFalse(ValidEntries.validPlayerShot(invalidAttempt8, exampleBoards));
+    assertFalse(ValidEntries.validPlayerShot(invalidAttempt8, exampleBoards, new ArrayList<>()));
   }
 }

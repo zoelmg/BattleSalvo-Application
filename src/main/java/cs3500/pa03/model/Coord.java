@@ -3,10 +3,11 @@ package cs3500.pa03.model;
 /**
  * Represent a Coordinate on the board of BattleSalvo
  */
-public class Coord {
-  int xpos;
-  int ypos;
-  CoordStatus status;
+public class Coord implements Comparable<Coord> {
+  private int xpos;
+  private int ypos;
+  private CoordStatus status;
+  private int distanceToCenter;
 
   /**
    * Initialize a coordinate on the board
@@ -18,6 +19,7 @@ public class Coord {
     this.xpos = xpos;
     this.ypos = ypos;
     this.status = CoordStatus.EMPTY;
+    this.distanceToCenter = 0;
   }
 
   /**
@@ -31,7 +33,9 @@ public class Coord {
     this.xpos = xpos;
     this.ypos = ypos;
     this.status = status;
+    this.distanceToCenter = 0;
   }
+
 
 
   /**
@@ -102,5 +106,33 @@ public class Coord {
 
     return false;
   }
+
+  /**
+   *
+   * @param o the coordinate that this coordinate is being compared to
+   * @return the integer representing which coordinate comes first
+   */
+  @Override
+  public int compareTo(Coord other) {
+    // Compare the distances to determine the ordering
+    return Integer.compare(distanceToCenter, other.getDistanceToCenter());
+  }
+
+  public void calculateDistanceToCenter(int boardHeight, int boardWidth) {
+    int centerX = boardWidth / 2;
+    int centerY = boardHeight / 2;
+
+    int dx = Math.abs(xpos - centerX);
+    int dy = Math.abs(ypos - centerY);
+
+    this.distanceToCenter = (int) Math.sqrt(dx * dx + dy * dy);
+  }
+
+
+  public int getDistanceToCenter() {
+    return this.distanceToCenter;
+  }
+
+
 
 }

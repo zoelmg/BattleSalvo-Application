@@ -100,7 +100,7 @@ public class ProxyController implements Controller {
    * Return this player's name as a Json message to join the game
    */
   private void handleJoin() {
-    PlayerJson response = new PlayerJson(this.aiPlayer.name(), GameType.SINGLE);
+    PlayerJson response = new PlayerJson(this.aiPlayer.name(), GameType.MULTI);
 
     JsonNode jsonArgResponse = JsonUtils.serializeRecord(response);
     MessageJson joinResponse = new MessageJson("join", jsonArgResponse);
@@ -180,6 +180,7 @@ public class ProxyController implements Controller {
 
     VolleyJson response = new VolleyJson(coordJsons);
     JsonNode jsonArgResponse = JsonUtils.serializeRecord(response);
+
     MessageJson reportdamageResponse = new MessageJson("report-damage", jsonArgResponse);
     JsonNode jsonResponse = JsonUtils.serializeRecord(reportdamageResponse);
 

@@ -1,5 +1,6 @@
 package cs3500.pa03.model;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -51,10 +52,33 @@ public class ValidEntries {
    * @param boards the board of the user
    * @return if the shot is a valid shot
    */
-  public static boolean validPlayerShot(Coord shot, TwoBoards boards) {
+  public static boolean validPlayerShot(Coord shot, TwoBoards boards, List<Coord> coords) {
     return !(shot.getXpos() > boards.getOpBoard()[0].length || shot.getXpos() < 0
-      || shot.getYpos() > boards.getOpBoard().length || shot.getYpos() < 0
-      || !(boards.getRemainingOpCoord().contains(shot)));
+        || shot.getYpos() > boards.getOpBoard().length || shot.getYpos() < 0
+        || !(boards.getRemainingOpCoord().contains(shot))
+        || repeatedShot(coords));
 
+  }
+
+  /**
+   * determine if there are repeated shots in a list of shots
+   *
+   * @param coords the list of coordinates of shots
+   * @return if the list has repeated coordinates
+   */
+  private static boolean repeatedShot( List<Coord> coords) {
+   boolean hasDuplicates = false;
+    for (int i = 0; i < coords.size() - 1; i++) {
+      for (int j = i + 1; j < coords.size(); j++) {
+        if (coords.get(i).equals(coords.get(j))) {
+          hasDuplicates = true;
+          break;
+        }
+      }
+      if (hasDuplicates) {
+        break;
+      }
+    }
+    return hasDuplicates;
   }
 }

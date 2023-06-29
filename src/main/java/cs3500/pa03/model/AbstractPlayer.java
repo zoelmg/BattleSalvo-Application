@@ -25,15 +25,20 @@ public abstract class AbstractPlayer implements Player {
    */
   protected Random random;
 
+  protected int height;
+  protected int width;
+
   /**
    * Initialize an Abstract player with its name and board
    *
    * @param random a random used for setup of player's boards
    */
   public AbstractPlayer(Random random) {
-    this.name = "zoelmg";
+    this.name = "pa04-battlesalvobeasts";
     this.boards = null;
     this.random = random;
+    this.height = 0;
+    this.width = 0;
   }
 
   /**
@@ -46,21 +51,8 @@ public abstract class AbstractPlayer implements Player {
     return this.name;
   }
 
-  /**
-   * Given the specifications for a BattleSalvo board, return a list of ships with their locations
-   * on the board.
-   *
-   * @param height         the height of the board, range: [6, 15] inclusive
-   * @param width          the width of the board, range: [6, 15] inclusive
-   * @param specifications a map of ship type to the number of occurrences each ship should
-   *                       appear on the board
-   * @return the placements of each ship on the board
-   */
   @Override
-  public List<Ship> setup(int height, int width, Map<ShipType, Integer> specifications) {
-    this.boards = new TwoBoards(height, width, specifications, random);
-    return boards.getFleet();
-  }
+  public abstract List<Ship> setup(int height, int width, Map<ShipType, Integer> specifications);
 
   @Override
   public abstract List<Coord> takeShots();
@@ -74,17 +66,7 @@ public abstract class AbstractPlayer implements Player {
    *         ship on this board
    */
   @Override
-  public List<Coord> reportDamage(List<Coord> opponentShotsOnBoard) {
-    List<Coord> damagedCoords = new ArrayList<>();
-    for (Coord currCoord : opponentShotsOnBoard) {
-      if (boards.updateMyBoard(currCoord)) {
-        damagedCoords.add(currCoord);
-      }
-    }
-
-    this.boards.updateRemainingShips();
-    return damagedCoords;
-  }
+  public abstract List<Coord> reportDamage(List<Coord> opponentShotsOnBoard);
 
   /**
    * Reports to this player what shots in their previous volley returned from takeShots()
@@ -93,11 +75,7 @@ public abstract class AbstractPlayer implements Player {
    * @param shotsThatHitOpponentShips the list of shots that successfully hit the opponent's ships
    */
   @Override
-  public void successfulHits(List<Coord> shotsThatHitOpponentShips) {
-    for (Coord currCoord : shotsThatHitOpponentShips) {
-      boards.updateOpponentBoard(currCoord, true);
-    }
-  }
+  public abstract void successfulHits(List<Coord> shotsThatHitOpponentShips);
 
   /**
    * Notifies the player that the game is over.
@@ -108,6 +86,6 @@ public abstract class AbstractPlayer implements Player {
    */
   @Override
   public void endGame(GameResult result, String reason) {
-
+    System.out.println(result.toString() + " " + reason);
   }
 }

@@ -67,6 +67,7 @@ public class ProxyControllerTest {
     // Create the client with all necessary messages
     Mocket socket = new Mocket(this.testLog, List.of(invalidMessageJson.toString()));
 
+
     // Create a Dealer
     this.dealer = new ProxyController(socket, aiPlayer);
 
